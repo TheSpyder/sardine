@@ -730,8 +730,10 @@ public class SardineImpl implements Sardine
 			{
 				// Retry with the Expect header removed
 				put.removeHeaders(HTTP.EXPECT_DIRECTIVE);
-				if (entity.isRepeatable())
-				{
+				if (entity.isRepeatable()) {
+					if (put.isAborted()) {
+						put.releaseConnection();
+					}
 					this.execute(put, new VoidResponseHandler());
 					return;
 				}
