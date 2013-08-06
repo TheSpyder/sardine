@@ -1,2 +1,6 @@
 target
 .settings
+*.eml
+*.iml
+*.ipr
+*.iws
