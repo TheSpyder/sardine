@@ -1,10 +1,13 @@
 package com.github.sardine;
 
-import javax.xml.namespace.QName;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+
+import javax.xml.namespace.QName;
+
+import org.apache.http.client.CredentialsProvider;
 
 /**
  * The main interface for Sardine operations.
@@ -29,6 +32,16 @@ public interface Sardine
 	 * @param workstation NTLM authentication
 	 */
 	void setCredentials(String username, String password, String domain, String workstation);
+
+	/**
+	 * Allows overriding the authentication credentials provider without creating a complete HttpClient instance
+	 */
+	void setCredentialsProvider(CredentialsProvider provider);
+
+	/**
+	 * Allows setting parameters on the {@link org.apache.http.params.HttpParams} without creating a complete HttpClient instance
+	 */
+	void setClientParameter(String name, Object value);
 
 	/**
 	 * @see #list(String)

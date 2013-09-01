@@ -38,6 +38,7 @@ import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.NTCredentials;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.AuthCache;
+import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.RedirectStrategy;
 import org.apache.http.client.ResponseHandler;
@@ -249,6 +250,16 @@ public class SardineImpl implements Sardine
 					new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT, AuthScope.ANY_REALM, AuthPolicy.KERBEROS),
 					new UsernamePasswordCredentials(username, password));
 		}
+	}
+
+	@Override
+	public void setCredentialsProvider(CredentialsProvider provider) {
+		client.setCredentialsProvider(provider);
+	}
+
+	@Override
+	public void setClientParameter(String name, Object value) {
+		client.getParams().setParameter(name, value);
 	}
 
 	/**
