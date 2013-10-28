@@ -57,6 +57,7 @@ import org.apache.http.conn.scheme.PlainSocketFactory;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.entity.StringEntity;
@@ -262,6 +263,10 @@ public class SardineImpl implements Sardine
 		client.getParams().setParameter(name, value);
 	}
 
+	@Override
+	public void addCookie(Cookie cookie) {
+		client.getCookieStore().addCookie(cookie);
+	}
 	/**
 	 * Adds handling of GZIP compression to the client.
 	 */

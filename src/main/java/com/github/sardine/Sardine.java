@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.xml.namespace.QName;
 
 import org.apache.http.client.CredentialsProvider;
+import org.apache.http.cookie.Cookie;
 
 /**
  * The main interface for Sardine operations.
@@ -42,6 +43,11 @@ public interface Sardine
 	 * Allows setting parameters on the {@link org.apache.http.params.HttpParams} without creating a complete HttpClient instance
 	 */
 	void setClientParameter(String name, Object value);
+
+	/**
+	 * Allows adding cookies for HTTP requests without creating a complete HttpClient instance
+	 */
+	void addCookie(Cookie cookie);
 
 	/**
 	 * @see #list(String)
@@ -360,5 +366,4 @@ public interface Sardine
 	 * requests.
 	 */
 	public void shutdown();
-
 }
